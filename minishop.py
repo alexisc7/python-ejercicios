@@ -56,6 +56,18 @@ def resumen_compra(nombre_prod,precio,cantidad):
         compras_realizadas[nombre_prod] = {"precio_unitario": precio, "cantidad": cantidad}
 
 
+def compra_total():
+    IVA = 1.21
+    total_con_IVA = 0
+    for _, detalles in compras_realizadas.items():
+        precio_unitario = detalles["precio_unitario"]
+        cantidad = detalles["cantidad"]
+        total_IVA = precio_unitario * cantidad * IVA
+
+        total_con_IVA+=total_IVA
+    print(f"Total de las compras realizadas (IVA incluido): ${total_con_IVA:.2f}\nGracias por su compra.\nHasta luego!")
+
+
 def mostrar_resumen():
     IVA = 1.21
     print("\nResumen de las compras realizadas:")
@@ -64,16 +76,19 @@ def mostrar_resumen():
         cantidad = detalles["cantidad"]
         total = precio_unitario * cantidad
         total_IVA = precio_unitario * cantidad * IVA
-        print(f"  Producto: {producto.capitalize()}\n  Precio unitario: ${precio_unitario:.2f}\n  Cantidad: {cantidad}\n  Impuesto IVA(21%) sobre el total de ésta compra: ${total*0.21:.2f}\n  Total de esta compra: ${total_IVA:.2f}")
-        print("-----------------")    
+        print(f"  Producto: {producto.capitalize()}\n  Precio unitario: ${precio_unitario:.2f}\n  Cantidad: {cantidad}\n  Impuesto IVA(21%): ${total*0.21:.2f}\n  Total de esta compra (IVA incluido): ${total_IVA:.2f}\n-----------------")
 
 
 def verificar_compras():
     if compras_realizadas == {}:
-        print('No ha hecho ninguna compra.\nHasta luego!')
+        print("No ha realizado ninguna compra.\nHasta luego!")
+    elif len(list(compras_realizadas.keys())) > 1:
+        mostrar_resumen()
+        compra_total() 
     else:
         mostrar_resumen()
         print("Gracias por su compra.\nHasta luego!")
+
 
 
 # regresar a la tienda
@@ -86,9 +101,9 @@ def return_store():
     elif respuesta == 'no' or respuesta == '2':
         verificar_compras()
     else:
-        print("Ingresaste cualquier mamada. Te crees muy listo? jajaj Pendejo :P")
+        print("Opción no valida")
 
-        last = input("Ultima oportunidad de comprar tu producto preferido.\nRegresear a la tienda?\n1. Si\n2. No\n:").lower()
+        last = input("Ultima chance de comprar su producto preferido.\nRegresear a la tienda?\n1. Si\n2. No\n:").lower()
 
         if last == '1' or last == 'si':
             mostrar_productos()
@@ -96,7 +111,7 @@ def return_store():
         elif last == '2' or last == 'no':
             verificar_compras()
         else:
-            print("Opcion no valida.\nestólido :P")  
+            print("Opción ingresada no valida")  
             verificar_compras()      
 
 # comprar de nuevo
