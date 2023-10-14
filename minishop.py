@@ -23,7 +23,6 @@ productos = {
 
 # lista de productos disponibles (solo los productos, sin sus precios).
 productos_g = [] 
-
 compras_realizadas = {}
 
 # Mostrar categorías y productos
@@ -33,7 +32,7 @@ def mostrar_productos():
         print(f"\nCategoría: {categoria.capitalize()}")
         for producto, precio in productos_en_categoria.items():
             print(f"{producto.capitalize()}: {precio}")
-            productos_g.append(producto.lower()) # agrega los productos a la lista 'productos_g'
+            productos_g.append(producto.lower())
 
 mostrar_productos()
 
@@ -46,7 +45,6 @@ def get_precio_usuario(nom_prod):
                 precio_unidad = precio 
                 break
     return precio_unidad
-
 
 # generar resumen de compra
 def resumen_compra(nombre_prod,precio,cantidad):
@@ -90,7 +88,6 @@ def verificar_compras():
         print("Gracias por su compra.\nHasta luego!")
 
 
-
 # regresar a la tienda
 def return_store(): 
     respuesta = input("desea regresar a la tienda?\n1. Si\n2. No\n:").lower()
@@ -127,7 +124,7 @@ def buy_again():
         print("Por favor ingrese opcion 1 o 'aceptar' u opcion 2 o 'cancelar")
         return_store()
         
-# ..........
+
 def main():
     nombre_producto = input("\nIngrese el nombre del producto que desea comprar\n:").lower()
 
