@@ -21,20 +21,26 @@ productos = {
     }
 }
 
-# lista de productos disponibles (solo los productos, sin sus precios).
-productos_g = [] 
 compras_realizadas = {}
 
 # Mostrar categorías y productos
-def mostrar_productos():
+def show_products():
     print("Bienvenido a la tienda\n\nProductos con sus respectivos precios:")
     for categoria, productos_en_categoria in productos.items():
         print(f"\nCategoría: {categoria.capitalize()}")
         for producto, precio in productos_en_categoria.items():
             print(f"{producto.capitalize()}: {precio}")
-            productos_g.append(producto.lower())
 
-mostrar_productos()
+show_products()
+
+# productos disponibles (lista de solo precios).
+def available_products(): 
+    disponibles = []
+    for _, productos_en_categoria in productos.items():
+        for producto, _ in productos_en_categoria.items():
+            disponibles.append(producto.lower())
+    return disponibles
+
 
 # obtener precio del producto elegido por el usuario
 def get_precio_usuario(nom_prod):
@@ -45,6 +51,7 @@ def get_precio_usuario(nom_prod):
                 precio_unidad = precio 
                 break
     return precio_unidad
+
 
 # generar resumen de compra
 def resumen_compra(nombre_prod,precio,cantidad):
@@ -93,7 +100,7 @@ def return_store():
     respuesta = input("desea regresar a la tienda?\n1. Si\n2. No\n:").lower()
 
     if respuesta == 'si' or respuesta == '1':
-        mostrar_productos()
+        show_products()
         main()
     elif respuesta == 'no' or respuesta == '2':
         verificar_compras()
@@ -103,7 +110,7 @@ def return_store():
         last = input("Ultima chance de comprar su producto preferido.\nRegresear a la tienda?\n1. Si\n2. No\n:").lower()
 
         if last == '1' or last == 'si':
-            mostrar_productos()
+            show_products()
             main()
         elif last == '2' or last == 'no':
             verificar_compras()
@@ -124,14 +131,14 @@ def buy_again():
         print("Por favor ingrese opcion 1 o 'aceptar' u opcion 2 o 'cancelar")
         return_store()
         
-
+# ..........
 def main():
     nombre_producto = input("\nIngrese el nombre del producto que desea comprar\n:").lower()
 
     if nombre_producto == "":
         print("No ingreso ningún producto")
         return_store()
-    elif nombre_producto not in productos_g:
+    elif nombre_producto not in available_products():
         print("Producto no disponible")
         buy_again()
     else:
