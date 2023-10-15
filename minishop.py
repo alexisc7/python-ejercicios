@@ -107,7 +107,7 @@ def return_store():
     else:
         print("Opción no valida")
 
-        last = input("Ultima chance de comprar su producto preferido.\nRegresear a la tienda?\n1. Si\n2. No\n:").lower()
+        last = input("Ultima chance de comprar su producto preferido.\nRegresar a la tienda?\n1. Si\n2. No\n:").lower()
 
         if last == '1' or last == 'si':
             show_products()
