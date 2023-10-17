@@ -33,16 +33,15 @@ def show_products():
 
 show_products()
 
-# productos disponibles (lista de solo precios).
-def available_products(): 
-    disponibles = []
+
+def available_products(disponibles) -> list: 
     for _, productos_en_categoria in productos.items():
         for producto, _ in productos_en_categoria.items():
             disponibles.append(producto.lower())
     return disponibles
 
 
-# obtener precio del producto elegido por el usuario
+# obtener precio unitario del producto elegido por el usuario
 def get_precio_usuario(nom_prod):
     vista_dict = productos.items()
     for _, productos_en_categoria in vista_dict:
@@ -95,7 +94,6 @@ def verificar_compras():
         print("Gracias por su compra.\nHasta luego!")
 
 
-# regresar a la tienda
 def return_store(): 
     respuesta = input("desea regresar a la tienda?\n1. Si\n2. No\n:").lower()
 
@@ -118,9 +116,9 @@ def return_store():
             print("Opción ingresada no valida")  
             verificar_compras()      
 
-# comprar de nuevo
-opciones = ['1', 'aceptar', '2', 'cancelar']
+
 def buy_again(): 
+    opciones = ['1', 'aceptar', '2', 'cancelar']
     pregunta = input("\n¿Desea comprar otro producto?: \n1. Aceptar\n2. Cancelar\nR: ").lower()
     if pregunta == opciones[0] or pregunta == opciones[1]:
         print("-----------------")
@@ -131,14 +129,14 @@ def buy_again():
         print("Por favor ingrese opcion 1 o 'aceptar' u opcion 2 o 'cancelar")
         return_store()
         
-# ..........
+
 def main():
     nombre_producto = input("\nIngrese el nombre del producto que desea comprar\n:").lower()
 
     if nombre_producto == "":
         print("No ingreso ningún producto")
         return_store()
-    elif nombre_producto not in available_products():
+    elif nombre_producto not in available_products([]):
         print("Producto no disponible")
         buy_again()
     else:
