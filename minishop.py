@@ -48,7 +48,6 @@ def get_precio_usuario(nom_prod):
         for producto, precio in productos_en_categoria.items():
             if nom_prod == producto:
                 precio_unidad = precio 
-                break
     return precio_unidad
 
 
