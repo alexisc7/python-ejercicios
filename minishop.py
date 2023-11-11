@@ -21,7 +21,7 @@ productos = {
     }
 }
 
-compras_realizadas = {}
+compras_realizadas = dict()
 
 # Mostrar categorías y productos
 def show_products():
