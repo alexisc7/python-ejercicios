@@ -1,5 +1,5 @@
 """"
-Sort the odd 6kyu
+Sort the odd
 
 Task
 You will be given an array of numbers. You have to sort the odd numbers in ascending order while leaving the even numbers at their original positions.
@@ -28,15 +28,6 @@ print(sort_array([9, 8, 7, 6, 5, 4, 3, 2, 1, 0])) #[1, 8, 3, 6, 5, 4, 7, 2, 9, 0
 
 
 # otras soluciones:
-
-def sort_array(source_array):
-    result = sorted([l for l in source_array if l % 2 == 1])
-    for index, item in enumerate(source_array):
-        if item % 2 == 0:
-            result.insert(index, item)
-    return result
-
-
 def sort_array(source_array):
     odd = sorted(list(filter(lambda x: x % 2, source_array)))
     l, c = [], 0
