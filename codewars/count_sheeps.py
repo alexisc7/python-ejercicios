@@ -16,8 +16,9 @@ The correct answer would be 17.
 Hint: Don't forget to check for bad values like null/undefined
 """
 
+from typing import List
 
-def count_sheeps(sheeps):
+def count_sheeps(sheeps: List[bool]) -> int:
     i = 0
     s = 0
     while(i < len(sheeps)):
@@ -40,7 +41,7 @@ print(count_sheeps(
 
 # Otras soluciones:
 
-def count_sheeps(array_of_sheeps):
+def count_sheeps(array_of_sheeps:List[bool]) -> int:
   count = 0
   for sheep in array_of_sheeps:
       if sheep:
@@ -48,9 +49,10 @@ def count_sheeps(array_of_sheeps):
   return count
 
 
-def count_sheeps(array_of_sheeps):
+def count_sheeps(array_of_sheeps:List[bool]) -> int:
   return array_of_sheeps.count(True)
 
 
-def count_sheeps(sheeps):
-  return len([x for x in sheeps if x])
+def count_sheeps(array_of_sheeps:List[bool]) -> int:
+  return len([x for x in array_of_sheeps if x])
+
