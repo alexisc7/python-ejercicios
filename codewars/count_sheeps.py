@@ -20,8 +20,8 @@ Hint: Don't forget to check for bad values like null/undefined
 
 from typing import List
 
-def count_sheeps(sheeps: List[bool]) -> int:
-    return sum(1 for sheep in sheeps if sheep)
+def count_sheeps(array_of_sheeps: List[bool]) -> int:
+    return sum(1 for sheep in array_of_sheeps if sheep)
 
 
 print(count_sheeps(
