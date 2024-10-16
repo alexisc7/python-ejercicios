@@ -16,17 +16,12 @@ The correct answer would be 17.
 Hint: Don't forget to check for bad values like null/undefined
 """
 
+# Solución:
+
 from typing import List
 
 def count_sheeps(sheeps: List[bool]) -> int:
-    i = 0
-    s = 0
-    while(i < len(sheeps)):
-        if (sheeps[i] != None):
-            if (sheeps[i] == True):
-                s+=1
-        i+=1
-    return s
+    return sum(1 for sheep in sheeps if sheep)
 
 
 print(count_sheeps(
@@ -42,6 +37,14 @@ print(count_sheeps(
 # Otras soluciones:
 
 def count_sheeps(array_of_sheeps:List[bool]) -> int:
+  return array_of_sheeps.count(True)
+
+
+def count_sheeps(array_of_sheeps:List[bool]) -> int:
+  return len([x for x in array_of_sheeps if x])
+
+
+def count_sheeps(array_of_sheeps:List[bool]) -> int:
   count = 0
   for sheep in array_of_sheeps:
       if sheep:
@@ -49,10 +52,11 @@ def count_sheeps(array_of_sheeps:List[bool]) -> int:
   return count
 
 
-def count_sheeps(array_of_sheeps:List[bool]) -> int:
-  return array_of_sheeps.count(True)
-
-
-def count_sheeps(array_of_sheeps:List[bool]) -> int:
-  return len([x for x in array_of_sheeps if x])
-
+def count_sheeps(array_of_sheeps: List[bool]) -> int:
+    i = 0
+    s = 0
+    while i < len(array_of_sheeps):
+        if array_of_sheeps[i]:
+            s+=1
+        i+=1
+    return s
